@@ -1,0 +1,212 @@
+.whatido-section {
+  padding: 80px 0 120px;
+  position: relative;
+  z-index: 9;
+}
+
+.whatido-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+/* Title */
+.whatido-title {
+  width: 280px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 120px;
+}
+
+.whatido-title h2 {
+  font-size: clamp(52px, 5vw, 80px);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.whatido-accent {
+  color: var(--accentColor);
+  font-style: italic;
+}
+
+/* Cards column */
+.whatido-cards {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Individual card */
+.whatido-card {
+  position: relative;
+  padding: 32px 36px;
+  min-height: 88px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: min-height 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+              padding 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  cursor: default;
+}
+
+/* Hover / active: expand */
+.card-no-touch:hover,
+.card-active {
+  min-height: 240px;
+  padding: 36px;
+}
+
+.card-no-touch:hover ~ .whatido-card,
+.card-sibling {
+  min-height: 64px;
+  padding: 18px 36px;
+}
+
+/* Card content visibility */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.card-head h3 {
+  font-size: clamp(24px, 2.8vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin: 0;
+}
+
+.card-head h4 {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--textMuted);
+  letter-spacing: 1px;
+  margin: 4px 0 0;
+}
+
+.card-content p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--textMuted);
+  line-height: 1.7;
+  max-width: 500px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+}
+
+.card-no-touch:hover .card-content p,
+.card-active .card-content p {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.card-sibling .card-content p {
+  max-height: 0;
+  opacity: 0;
+}
+
+/* Tags */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease 0.1s, opacity 0.4s ease 0.1s;
+}
+
+.card-no-touch:hover .card-tags,
+.card-active .card-tags {
+  max-height: 100px;
+  opacity: 1;
+}
+
+.card-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  padding: 3px 10px;
+  border: 1px solid rgba(127, 64, 255, 0.4);
+  border-radius: 20px;
+  color: var(--accent2);
+  background: rgba(127, 64, 255, 0.08);
+}
+
+/* SVG dashed border on top of each card */
+.card-border-h {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.card-border-bottom {
+  position: relative;
+  opacity: 0.25;
+  padding: 0;
+  min-height: 0 !important;
+}
+
+/* Corner accent */
+.card-corner {
+  position: absolute;
+  top: -1px;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid rgba(127, 64, 255, 0.5);
+  border-right: 2px solid rgba(127, 64, 255, 0.5);
+}
+
+/* Arrow indicator */
+.card-arrow {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  width: 20px;
+  height: 20px;
+  border-right: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  transform: rotate(-45deg);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card-no-touch:hover .card-arrow,
+.card-active .card-arrow {
+  transform: rotate(45deg);
+  border-color: var(--accentColor);
+}
+
+/* Responsive */
+@media only screen and (max-width: 900px) {
+  .whatido-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .whatido-title {
+    width: 100%;
+    position: relative;
+    top: auto;
+  }
+
+  .whatido-title h2 {
+    font-size: 52px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .whatido-card {
+    padding: 24px 20px;
+  }
+
+  .card-no-touch:hover,
+  .card-active {
+    padding: 28px 20px;
+  }
+}

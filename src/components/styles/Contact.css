@@ -1,0 +1,131 @@
+.contact-section {
+  padding: 120px 0 80px;
+}
+
+.contact-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.contact-heading {
+  font-size: clamp(56px, 8vw, 120px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.contact-accent {
+  color: var(--accentColor);
+  font-style: italic;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  border-top: 1px solid var(--border);
+  padding-top: 48px;
+}
+
+.contact-block-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--textMuted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.contact-email {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(14px, 1.4vw, 18px);
+  color: var(--textColor);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.contact-email:hover {
+  color: var(--accent2);
+}
+
+.contact-arrow {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.contact-email:hover .contact-arrow {
+  transform: translate(3px, -3px);
+}
+
+.contact-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-social-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--textMuted);
+  transition: color 0.3s ease;
+}
+
+.contact-social-link:hover {
+  color: var(--accent2);
+}
+
+.contact-arrow-sm {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.contact-social-link:hover .contact-arrow-sm {
+  transform: translate(2px, -2px);
+}
+
+.contact-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+}
+
+.contact-credit {
+  font-size: 13px;
+  color: var(--textMuted);
+}
+
+.contact-credit span {
+  color: var(--textColor);
+}
+
+.contact-copy {
+  font-size: 13px;
+  color: var(--textMuted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media only screen and (max-width: 700px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .contact-heading {
+    letter-spacing: -1px;
+  }
+
+  .contact-footer {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+}

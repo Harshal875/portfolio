@@ -1,0 +1,119 @@
+:root {
+  --backgroundColor: #07040a;
+  --accentColor: #7f40ff;
+  --accent2: #c2a4ff;
+  --accent3: #ff40c8;
+  --textColor: #f0eeff;
+  --textMuted: #8a8599;
+  --border: #2a2035;
+  --cWidth: 88%;
+  --cMaxWidth: 1400px;
+  --vh: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--backgroundColor);
+  color: var(--textColor);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+/* GSAP split-type line wrapper */
+.split-line {
+  overflow: hidden;
+  display: block;
+}
+
+/* Tech stack canvas absolute fill */
+.tech-canvas {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Section container for content width */
+.section-container {
+  width: var(--cMaxWidth);
+  max-width: var(--cWidth);
+  margin: 0 auto;
+}
+
+/* Main is always visible; loading screen acts as the cover */
+main {
+  opacity: 1;
+}
+
+/* Scrollable marquee band */
+.marquee-track {
+  overflow: hidden;
+  display: flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    --cWidth: 90%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  body {
+    --cWidth: 88%;
+  }
+}

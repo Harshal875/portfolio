@@ -1,0 +1,32 @@
+.section-container {
+  width: 1300px;
+  max-width: var(--cWidth);
+  margin: 0 auto;
+}
+
+.title,
+.para {
+  font-kerning: none;
+  -webkit-text-rendering: optimizeSpeed;
+  text-rendering: optimizeSpeed;
+}
+
+@media only screen and (max-width: 1600px) {
+  .section-container {
+    width: 1200px;
+    max-width: calc(100% - 120px);
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .section-container {
+    width: 1000px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .section-container {
+    width: 100%;
+    max-width: calc(100% - 48px);
+  }
+}

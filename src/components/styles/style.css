@@ -1,0 +1,31 @@
+/* HoverLinks */
+.hover-link {
+  overflow: hidden;
+  display: block;
+  line-height: 1;
+}
+
+.hover-in {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.76, 0, 0.24, 1);
+  line-height: 1.2;
+}
+
+.hover-in > span,
+.hover-in > div {
+  display: block;
+}
+
+.hover-in div {
+  color: var(--accent2);
+}
+
+.hover-link:hover .hover-in {
+  transform: translateY(-100%);
+}
+
+/* Shared: section headings accent */
+.accent-dot {
+  color: var(--accentColor);
+}
