@@ -5,6 +5,18 @@ import './styles/Work.css'
 const PROJECTS = [
   {
     num: '01',
+    name: 'KrayBot',
+    category: 'Product · SaaS · Full-Stack',
+    desc: 'IndiaMART lead capture SaaS with ~250ms response time — faster than any human. The bot polls the live feed every 2–4s, matches leads against your keywords, and auto-accepts before competitors react. Full-stack: Next.js dashboard, Python automation engine, Razorpay payments, Clerk auth, Turso DB. 500+ active sellers, 12,000+ leads captured daily.',
+    stack: 'Next.js · TypeScript · Python · Prisma · Turso · Clerk · Razorpay · Railway · Vercel',
+    github: '',
+    live: 'https://kraybot.com',
+    liveLabel: 'Live Product',
+    liveIcon: 'external',
+    badge: 'Live Product · ₹2,999–₹4,999/mo',
+  },
+  {
+    num: '02',
     name: 'fenestr',
     category: 'Open Source · Python · PyPI',
     desc: 'Created a lightweight Python library that renders YouTube videos and websites directly inside Jupyter Notebook cells via iframes. Auto-detects content type, ships with class-based API, URL validation, custom exceptions, and a full CI/CD pipeline.',
@@ -14,19 +26,6 @@ const PROJECTS = [
     liveLabel: 'PyPI',
     liveIcon: 'pypi',
     badge: 'Published on PyPI',
-  },
-  {
-    num: '02',
-    name: 'Next Project',
-    category: 'Coming Soon',
-    desc: "Something's in the works.",
-    stack: '',
-    github: '',
-    live: '',
-    liveLabel: '',
-    liveIcon: '',
-    badge: '',
-    placeholder: true,
   },
 ]
 
