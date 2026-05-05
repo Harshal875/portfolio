@@ -38,7 +38,7 @@ const Work = () => {
         </h2>
         <div className="work-grid">
           {PROJECTS.map((p) => (
-            <div className={`work-box${p.placeholder ? ' work-placeholder' : ''}`} key={p.num}>
+            <div className="work-box" key={p.num}>
               <div className="work-num">{p.num}</div>
               <div className="work-info">
                 <div className="work-title-row">
