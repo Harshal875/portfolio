@@ -6,7 +6,7 @@ const About = () => {
       <div className="about-inner">
         <h3 className="title about-label">About Me</h3>
         <p className="para about-text">
-          B.Tech CSE (AI) at PEC Chandigarh. Currently a Data Engineer Intern at CVENT. I build across the stack — backend APIs, ML pipelines, LLM systems, and the infra that keeps them running. Whether it&apos;s shipping a FastAPI service, fine-tuning a model, or wiring up a real-time data pipeline, I care about the whole system, not just one layer.
+          B.Tech CSE (AI) at PEC Chandigarh. Data Engineer Intern at CVENT. I build across the full stack — backend APIs, real-time data pipelines, LLM systems, and the infra that ties them together. Equally comfortable shipping a FastAPI service, designing a Kafka topology, or fine-tuning a model. I care about the whole system, not just one layer.
         </p>
         <div className="about-stats">
           <div className="about-stat">
