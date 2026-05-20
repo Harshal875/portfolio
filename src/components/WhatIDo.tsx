@@ -20,7 +20,7 @@ const CARDS = [
     id: 2,
     heading: 'MODEL',
     sub: 'AI & LLMOps',
-    body: 'Fine-tune, deploy, and monitor language models in production. RAG pipelines, prompt engineering, evaluation frameworks. Bridging the gap between a capable model and a reliable system.',
+    body: 'Fine-tune, deploy, and monitor language models in production. RAG pipelines, prompt engineering, structured output, evaluation frameworks. Bridging the gap between a capable model and a production-grade system.',
     tags: ['PyTorch', 'HuggingFace', 'LangChain', 'RAG', 'LLMOps', 'OpenAI', 'vLLM'],
   },
 ]
