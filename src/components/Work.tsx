@@ -2,6 +2,7 @@ import { FiGithub, FiArrowUpRight } from 'react-icons/fi'
 import { SiPypi } from 'react-icons/si'
 import './styles/Work.css'
 
+// Projects — sorted by recency / impact
 const PROJECTS = [
   {
     num: '01',
