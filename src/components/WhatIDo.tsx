@@ -13,7 +13,7 @@ const CARDS = [
     id: 1,
     heading: 'ENGINEER',
     sub: 'Data & ML Pipelines',
-    body: 'Design and operate data infrastructure — streaming pipelines, warehouse transformations, caching layers. From raw events to clean, queryable data with latency that matters.',
+    body: 'Design and operate data infrastructure — Kafka streaming pipelines, Snowflake warehouse transformations, Redis caching layers. From raw events to clean, queryable datasets with sub-second latency.',
     tags: ['Kafka', 'Snowflake', 'dbt', 'Redis', 'SQL', 'Airflow', 'Docker'],
   },
   {
