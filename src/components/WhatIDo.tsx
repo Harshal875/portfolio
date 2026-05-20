@@ -6,7 +6,7 @@ const CARDS = [
     id: 0,
     heading: 'BUILD',
     sub: 'Products & APIs',
-    body: 'End-to-end products — from FastAPI backends to React frontends. I architect systems for real-time communication (WebRTC, WebSocket), design RESTful APIs, and ship things that work reliably at scale.',
+    body: 'End-to-end products — from FastAPI backends to React frontends. I design systems for real-time communication (WebRTC, WebSocket), build RESTful and GraphQL APIs, and ship things that hold up under real load.',
     tags: ['Python', 'FastAPI', 'React', 'Node.js', 'WebRTC', 'WebSocket', 'Nginx'],
   },
   {
