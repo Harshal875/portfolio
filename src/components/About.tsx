@@ -18,7 +18,7 @@ const About = () => {
             <span className="stat-label">Projects Shipped</span>
           </div>
           <div className="about-stat">
-            <span className="stat-num">6mo</span>
+            <span className="stat-num">1yr</span>
             <span className="stat-label">Industry Exp</span>
           </div>
         </div>
