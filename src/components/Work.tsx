@@ -14,7 +14,7 @@ const PROJECTS = [
     live: 'https://kraybot.com',
     liveLabel: 'Live Product',
     liveIcon: 'external',
-    badge: 'Live Product · ₹2,999–₹4,999/mo',
+    badge: 'Live · 500+ Sellers · 12K+ Leads/day',
   },
   {
     num: '02',
