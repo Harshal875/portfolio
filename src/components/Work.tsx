@@ -1,58 +1,261 @@
+import { useRef } from 'react'
 import { FiGithub, FiArrowUpRight } from 'react-icons/fi'
 import { SiPypi } from 'react-icons/si'
 import './styles/Work.css'
 
-// Projects — sorted by recency / impact
 const PROJECTS = [
   {
     num: '01',
     name: 'KrayBot',
-    category: 'Product · SaaS · Full-Stack',
-    desc: 'IndiaMART lead capture SaaS with ~250ms response time — faster than any human. The bot polls the live feed every 2–4s, matches leads against your keywords, and auto-accepts before competitors react. Full-stack: Next.js dashboard, Python automation engine, Razorpay payments, Clerk auth, Turso DB. 500+ active sellers, 12,000+ leads captured daily.',
-    stack: 'Next.js · TypeScript · Python · Prisma · Turso · Clerk · Razorpay · Railway · Vercel',
+    category: 'SaaS · Full-Stack',
+    desc: 'IndiaMART lead capture SaaS — polls live feed every 2–4s, auto-accepts leads before competitors react. Full-stack with Next.js dashboard, Python engine, Razorpay payments & Clerk auth.',
+    stack: ['Next.js', 'TypeScript', 'Python', 'Prisma', 'Turso', 'Clerk', 'Razorpay'],
     github: '',
     live: 'https://kraybot.com',
     liveLabel: 'Live Product',
     liveIcon: 'external',
-    badge: 'Live · 500+ Sellers · 12K+ Leads/day',
+    badge: '500+ Sellers · 12K+ Leads/day',
+    visual: 'kraybot' as const,
   },
   {
     num: '02',
-    name: 'Real-Time Market Intelligence Platform',
-    category: 'Infrastructure · Distributed Systems · Quant',
-    desc: 'End-to-end event-driven market data pipeline ingesting live Level-1 order book data from Binance WebSocket streams for BTC, ETH, SOL — processing ~3,600 ticks/min per symbol. 11 Docker containers: Kafka broker, TimescaleDB hypertables, Elasticsearch, Redis Pub/Sub, and a gRPC order book service (4 RPCs, sub-ms latency). Includes real-time OHLCV + VWAP computation and a GraphQL API (Strawberry + FastAPI) with WebSocket subscriptions.',
-    stack: 'Python · Kafka · gRPC · Protobuf · TimescaleDB · Elasticsearch · Redis · GraphQL · FastAPI · Docker',
+    name: 'Market Intelligence',
+    category: 'Infrastructure · Distributed Systems',
+    desc: 'Event-driven pipeline ingesting live order book data from Binance WebSocket streams. 11 Docker containers, Kafka, TimescaleDB, gRPC service at sub-ms latency, GraphQL subscriptions.',
+    stack: ['Python', 'Kafka', 'gRPC', 'TimescaleDB', 'Elasticsearch', 'Redis', 'Docker'],
     github: 'https://github.com/Harshal875/realtime-crypto-data-infra',
     live: '',
     liveLabel: '',
     liveIcon: '',
-    badge: 'Distributed Systems · 11 Containers',
+    badge: '11 Containers · 3.6K ticks/min',
+    visual: 'market' as const,
   },
   {
     num: '03',
     name: 'Trubeca Lifesciences',
     category: 'Client Work · Full-Stack · Web',
-    desc: 'Complete ground-up rebuild of a pharmaceutical company website replacing an outdated WordPress template. Migrated 118 products across 7 categories into a structured data layer with dynamic routing (/products/[slug]) — generating 100+ individually SEO-indexed URLs. Built category filtering, search, auto-generated sitemap.xml, per-page Open Graph metadata, Framer Motion animations, and a sticky WhatsApp CTA critical for Indian pharma distributors.',
-    stack: 'Next.js 15 · TypeScript · Tailwind CSS · Framer Motion · React 19',
+    desc: 'Ground-up rebuild of a pharma website. 118 products across 7 categories with dynamic routing — generating 100+ SEO-indexed URLs, sitemap.xml, Open Graph metadata & WhatsApp CTA.',
+    stack: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'React 19'],
     github: 'https://github.com/Harshal875/trubeca-website',
     live: 'https://trubeca.com',
     liveLabel: 'Live Site',
     liveIcon: 'external',
-    badge: '118 Products · 8 Pages',
+    badge: '118 Products · 100+ SEO URLs',
+    visual: 'trubeca' as const,
   },
   {
     num: '04',
     name: 'fenestr',
     category: 'Open Source · Python · PyPI',
-    desc: 'Created a lightweight Python library that renders YouTube videos and websites directly inside Jupyter Notebook cells via iframes. Auto-detects content type, ships with class-based API, URL validation, custom exceptions, and a full CI/CD pipeline.',
-    stack: 'Python · Jupyter · PyPI · GitHub Actions · tox',
+    desc: 'Lightweight Python library that renders YouTube videos and websites inside Jupyter Notebook cells via iframes. Auto-detects content type, full CI/CD pipeline via GitHub Actions.',
+    stack: ['Python', 'Jupyter', 'PyPI', 'GitHub Actions', 'tox'],
     github: 'https://github.com/Harshal875/fenestr',
     live: 'https://pypi.org/project/fenestr/',
     liveLabel: 'PyPI',
     liveIcon: 'pypi',
     badge: 'Published on PyPI',
+    visual: 'fenestr' as const,
   },
 ]
+
+// ─── Per-project decorative visuals ──────────────────────────────────────────
+
+const VisualKrayBot = () => (
+  <div className="proj-visual v-kraybot">
+    <div className="vk-glow" />
+    <div className="vk-notification">
+      <span className="vk-dot" />
+      <div className="vk-notif-text">
+        <span className="vk-notif-title">New Lead Captured</span>
+        <span className="vk-notif-sub">auto-accepted · 247ms</span>
+      </div>
+      <span className="vk-check">✓</span>
+    </div>
+    <div className="vk-notification vk-n2">
+      <span className="vk-dot" />
+      <div className="vk-notif-text">
+        <span className="vk-notif-title">Lead from Mumbai</span>
+        <span className="vk-notif-sub">auto-accepted · 312ms</span>
+      </div>
+      <span className="vk-check">✓</span>
+    </div>
+    <div className="vk-stat">
+      <span className="vk-stat-num">12,847</span>
+      <span className="vk-stat-label">leads captured today</span>
+    </div>
+  </div>
+)
+
+const BAR_HEIGHTS = [38, 62, 44, 78, 52, 88, 66, 74, 58, 92, 48, 70, 84, 55, 96]
+const BAR_COLORS = [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1] // 1=green 0=red
+
+const VisualMarket = () => (
+  <div className="proj-visual v-market">
+    <div className="vm-header">
+      <span className="vm-ticker">BTC / USDT</span>
+      <span className="vm-price">43,218.40</span>
+      <span className="vm-change positive">+2.41%</span>
+    </div>
+    <div className="vm-chart">
+      {BAR_HEIGHTS.map((h, i) => (
+        <div
+          key={i}
+          className={`vm-bar ${BAR_COLORS[i] ? 'vm-green' : 'vm-red'}`}
+          style={{ height: `${h}%` }}
+        />
+      ))}
+    </div>
+    <div className="vm-footer">
+      <span className="vm-tag">Kafka</span>
+      <span className="vm-tag">gRPC</span>
+      <span className="vm-tag">sub-ms latency</span>
+    </div>
+  </div>
+)
+
+const VisualTrubeca = () => (
+  <div className="proj-visual v-trubeca">
+    <div className="vt-grid">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div key={i} className="vt-product-card">
+          <div className="vt-product-img" style={{ '--delay': `${i * 0.08}s` } as React.CSSProperties} />
+          <div className="vt-product-line" />
+          <div className="vt-product-line vt-short" />
+        </div>
+      ))}
+    </div>
+    <div className="vt-seo-bar">
+      <span className="vt-seo-dot" />
+      <span>100+ SEO-indexed pages live</span>
+    </div>
+  </div>
+)
+
+const VisualFenestr = () => (
+  <div className="proj-visual v-fenestr">
+    <div className="vf-cell">
+      <div className="vf-prompt">In [1]:</div>
+      <div className="vf-code">
+        <span className="vf-kw">from</span>
+        <span className="vf-plain"> fenestr </span>
+        <span className="vf-kw">import</span>
+        <span className="vf-plain"> YouTube</span>
+        <br />
+        <span className="vf-plain">YouTube(</span>
+        <span className="vf-str">&quot;dQw4w9WgXcQ&quot;</span>
+        <span className="vf-plain">).show()</span>
+      </div>
+    </div>
+    <div className="vf-output">
+      <div className="vf-iframe-mock">
+        <div className="vf-iframe-bar">
+          <span />
+          <span />
+          <span />
+          <span className="vf-url">youtube.com/watch?v=dQw…</span>
+        </div>
+        <div className="vf-iframe-content" />
+      </div>
+    </div>
+    <div className="vf-pypi-badge">
+      <SiPypi size={12} /> PyPI
+    </div>
+  </div>
+)
+
+const VISUALS = {
+  kraybot: VisualKrayBot,
+  market: VisualMarket,
+  trubeca: VisualTrubeca,
+  fenestr: VisualFenestr,
+}
+
+// ─── Card ─────────────────────────────────────────────────────────────────────
+
+const ProjectCard = ({ p }: { p: typeof PROJECTS[number] }) => {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const Visual = VISUALS[p.visual]
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width - 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5
+    el.style.transform = `perspective(900px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg) translateY(-6px)`
+  }
+
+  const handleMouseLeave = () => {
+    const el = cardRef.current
+    if (!el) return
+    el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)'
+  }
+
+  return (
+    <div
+      className="proj-card work-card"
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Visual panel */}
+      <div className="proj-visual-wrap">
+        <Visual />
+      </div>
+
+      {/* Info panel */}
+      <div className="proj-body">
+        <div className="proj-header-row">
+          <div>
+            <span className="proj-num">{p.num}</span>
+            <h3 className="proj-name">{p.name}</h3>
+            <span className="proj-category">{p.category}</span>
+          </div>
+          <div className="proj-actions">
+            {p.github && (
+              <a
+                href={p.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="proj-icon-btn"
+                data-cursor="disable"
+                aria-label="GitHub"
+              >
+                <FiGithub />
+              </a>
+            )}
+            {p.live && (
+              <a
+                href={p.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="proj-icon-btn"
+                data-cursor="disable"
+                aria-label={p.liveLabel}
+              >
+                {p.liveIcon === 'pypi' ? <SiPypi /> : <FiArrowUpRight />}
+              </a>
+            )}
+          </div>
+        </div>
+
+        {p.badge && <span className="proj-badge">{p.badge}</span>}
+        <p className="proj-desc">{p.desc}</p>
+
+        <div className="proj-stack">
+          {p.stack.map((s) => (
+            <span key={s} className="proj-pill">{s}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* Gradient border glow */}
+      <div className="proj-border-glow" />
+    </div>
+  )
+}
+
+// ─── Section ──────────────────────────────────────────────────────────────────
 
 const Work = () => {
   return (
@@ -61,46 +264,9 @@ const Work = () => {
         <h2 className="work-heading">
           My <span className="work-accent">Work</span>
         </h2>
-        <div className="work-grid">
+        <div className="work-bento">
           {PROJECTS.map((p) => (
-            <div className="work-box" key={p.num}>
-              <div className="work-num">{p.num}</div>
-              <div className="work-info">
-                <div className="work-title-row">
-                  <h3 className="work-name">{p.name}</h3>
-                  <div className="work-links">
-                    {p.github && (
-                      <a
-                        href={p.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="work-link-icon"
-                        data-cursor="disable"
-                        aria-label="GitHub"
-                      >
-                        <FiGithub />
-                      </a>
-                    )}
-                    {p.live && (
-                      <a
-                        href={p.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="work-link-icon"
-                        data-cursor="disable"
-                        aria-label={p.liveLabel}
-                      >
-                        {p.liveIcon === 'pypi' ? <SiPypi /> : <FiArrowUpRight />}
-                      </a>
-                    )}
-                  </div>
-                </div>
-                <span className="work-category">{p.category}</span>
-                {p.badge && <span className="work-badge">{p.badge}</span>}
-                <p className="work-desc">{p.desc}</p>
-                {p.stack && <p className="work-stack">{p.stack}</p>}
-              </div>
-            </div>
+            <ProjectCard key={p.num} p={p} />
           ))}
         </div>
       </div>

@@ -23,14 +23,15 @@ export function setAllTimeline() {
 
   // Work section cards
   gsap.fromTo(
-    '.work-box',
-    { autoAlpha: 0, y: 50 },
+    '.work-card',
+    { autoAlpha: 0, y: 60, scale: 0.97 },
     {
       autoAlpha: 1,
       y: 0,
-      duration: 0.7,
+      scale: 1,
+      duration: 0.75,
       ease: 'power3.out',
-      stagger: 0.15,
+      stagger: 0.12,
       scrollTrigger: {
         trigger: '.work-section',
         start: 'top 65%',
