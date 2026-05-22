@@ -60,28 +60,50 @@ const PROJECTS = [
 
 // ─── Per-project decorative visuals ──────────────────────────────────────────
 
+const LEAD_LINES = [
+  { city: 'Mumbai',    ms: '247', kw: 'pharma bulk'     },
+  { city: 'Delhi',     ms: '189', kw: 'api integration' },
+  { city: 'Pune',      ms: '312', kw: 'saas leads'      },
+  { city: 'Bangalore', ms: '203', kw: 'indiamart bot'   },
+  { city: 'Hyderabad', ms: '274', kw: 'lead capture'    },
+]
+
 const VisualKrayBot = () => (
   <div className="proj-visual v-kraybot">
-    <div className="vk-glow" />
-    <div className="vk-notification">
-      <span className="vk-dot" />
-      <div className="vk-notif-text">
-        <span className="vk-notif-title">New Lead Captured</span>
-        <span className="vk-notif-sub">auto-accepted · 247ms</span>
+    <div className="vk-term">
+      <div className="vk-term-bar">
+        <span className="vk-tb-dot" style={{ background: '#ff5f57' }} />
+        <span className="vk-tb-dot" style={{ background: '#febc2e' }} />
+        <span className="vk-tb-dot" style={{ background: '#28c840' }} />
+        <span className="vk-tb-title">kraybot · live feed</span>
       </div>
-      <span className="vk-check">✓</span>
-    </div>
-    <div className="vk-notification vk-n2">
-      <span className="vk-dot" />
-      <div className="vk-notif-text">
-        <span className="vk-notif-title">Lead from Mumbai</span>
-        <span className="vk-notif-sub">auto-accepted · 312ms</span>
+      <div className="vk-term-body">
+        <div className="vk-line vk-cmd" style={{ '--d': '0s' } as React.CSSProperties}>
+          <span className="vk-prompt">$</span> python kraybot.py --seller=demo
+        </div>
+        <div className="vk-line vk-info" style={{ '--d': '0.2s' } as React.CSSProperties}>
+          Connecting to IndiaMART feed...
+        </div>
+        <div className="vk-line vk-ok" style={{ '--d': '0.4s' } as React.CSSProperties}>
+          ● Feed live · polling every 3s
+        </div>
+        {LEAD_LINES.map((l, i) => (
+          <div
+            key={i}
+            className="vk-line vk-lead"
+            style={{ '--d': `${0.6 + i * 0.18}s` } as React.CSSProperties}
+          >
+            <span className="vk-ms">[{l.ms}ms]</span>
+            <span className="vk-lead-city">{l.city}</span>
+            <span className="vk-kw">&quot;{l.kw}&quot;</span>
+            <span className="vk-accept">✓ ACCEPTED</span>
+          </div>
+        ))}
+        <div className="vk-line vk-stat" style={{ '--d': '1.7s' } as React.CSSProperties}>
+          <span className="vk-stat-total">12,847</span> leads captured today
+          <span className="vk-cursor" />
+        </div>
       </div>
-      <span className="vk-check">✓</span>
-    </div>
-    <div className="vk-stat">
-      <span className="vk-stat-num">12,847</span>
-      <span className="vk-stat-label">leads captured today</span>
     </div>
   </div>
 )
@@ -136,7 +158,7 @@ const VisualTrubeca = () => {
         className="vt-iframe"
         style={{
           transform: `scale(${scale})`,
-          height: `${220 / scale}px`,
+          height: `${320 / scale}px`,
         }}
       />
       <div className="vt-iframe-fade" />
@@ -146,6 +168,11 @@ const VisualTrubeca = () => {
 
 const VisualFenestr = () => (
   <div className="proj-visual v-fenestr">
+    <div className="vf-install">
+      <span className="vf-prompt">$</span>
+      <span className="vf-install-cmd">pip install fenestr</span>
+      <span className="vf-install-ok">✓ installed</span>
+    </div>
     <div className="vf-cell">
       <div className="vf-prompt">In [1]:</div>
       <div className="vf-code">

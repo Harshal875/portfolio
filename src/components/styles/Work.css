@@ -65,7 +65,7 @@
 /* ─── Visual panel (top of card) ─────────────────── */
 .proj-visual-wrap {
   width: 100%;
-  height: 220px;
+  height: 320px;
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
@@ -78,113 +78,141 @@
   overflow: hidden;
 }
 
-/* ── KrayBot visual ── */
+/* ── KrayBot visual — terminal ── */
 .v-kraybot {
-  background: linear-gradient(135deg, #1a0840 0%, #2d0e6b 40%, #4a1080 70%, #1e0535 100%);
+  background: #050208;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.vk-term {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 28px 28px 20px;
-  gap: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
 }
 
-.vk-glow {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(127, 64, 255, 0.4) 0%, transparent 70%);
-  top: -60px;
-  right: -40px;
-  pointer-events: none;
-}
-
-.vk-notification {
+.vk-term-bar {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 10px 14px;
-  width: 100%;
-  animation: vk-slide-in 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+  gap: 6px;
+  padding: 10px 16px;
+  background: #0d0618;
+  border-bottom: 1px solid rgba(127, 64, 255, 0.15);
+  flex-shrink: 0;
 }
 
-.vk-n2 {
-  animation-delay: 0.15s;
-  opacity: 0.75;
-  transform: scale(0.97);
+.vk-tb-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-@keyframes vk-slide-in {
-  from { opacity: 0; transform: translateY(16px); }
+.vk-tb-title {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 1px;
+  margin-left: 8px;
+}
+
+.vk-term-body {
+  flex: 1;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.vk-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.5;
+  opacity: 0;
+  animation: vk-appear 0.35s ease forwards;
+  animation-delay: var(--d);
+}
+
+@keyframes vk-appear {
+  from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.vk-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #7f40ff;
+.vk-prompt {
+  color: #7f40ff;
   flex-shrink: 0;
-  box-shadow: 0 0 8px rgba(127, 64, 255, 0.9);
-  animation: pulse-dot 2s infinite;
 }
 
-@keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 6px rgba(127, 64, 255, 0.9); }
-  50%       { box-shadow: 0 0 14px rgba(127, 64, 255, 1); }
+.vk-cmd   { color: rgba(255, 255, 255, 0.7); font-size: 11px; }
+.vk-info  { color: rgba(255, 255, 255, 0.3); font-size: 11px; }
+.vk-ok    { color: #22c55e; font-size: 11px; }
+
+.vk-lead {
+  font-size: 11px;
+  gap: 6px;
+  flex-wrap: nowrap;
 }
 
-.vk-notif-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  flex: 1;
+.vk-ms {
+  color: rgba(127, 64, 255, 0.8);
+  flex-shrink: 0;
+  min-width: 52px;
 }
 
-.vk-notif-title {
-  font-size: 12px;
-  font-weight: 600;
-  color: #f0eeff;
+.vk-lead-city {
+  color: rgba(255, 255, 255, 0.75);
+  flex-shrink: 0;
+  min-width: 72px;
 }
 
-.vk-notif-sub {
-  font-family: 'Space Mono', monospace;
+.vk-kw {
+  color: rgba(255, 255, 255, 0.3);
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.45);
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.vk-check {
-  font-size: 13px;
-  color: #a78bfa;
+.vk-accept {
+  color: #4ade80;
+  font-size: 10px;
+  flex-shrink: 0;
+  font-weight: 600;
 }
 
 .vk-stat {
-  margin-top: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 11px;
+  margin-top: 4px;
+  gap: 6px;
 }
 
-.vk-stat-num {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
+.vk-stat-total {
   color: #fff;
-  letter-spacing: -1px;
-  line-height: 1;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
-.vk-stat-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.45);
-  letter-spacing: 1px;
-  text-transform: uppercase;
+.vk-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 13px;
+  background: #7f40ff;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 /* ── Market visual ── */
@@ -290,7 +318,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 80px;
+  height: 100px;
   background: linear-gradient(to bottom, transparent, #0c0914);
   pointer-events: none;
 }
@@ -301,8 +329,34 @@
   padding: 18px 20px 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   font-family: 'Space Mono', monospace;
+}
+
+.vf-install {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 11px;
+}
+
+.vf-prompt {
+  color: #22c55e;
+  flex-shrink: 0;
+}
+
+.vf-install-cmd {
+  color: rgba(255, 255, 255, 0.8);
+  flex: 1;
+}
+
+.vf-install-ok {
+  color: #4ade80;
+  font-size: 10px;
 }
 
 .vf-cell {
@@ -314,7 +368,7 @@
   gap: 12px;
 }
 
-.vf-prompt {
+.vf-cell .vf-prompt {
   font-size: 10px;
   color: #22c55e;
   flex-shrink: 0;
@@ -323,12 +377,12 @@
 
 .vf-code {
   font-size: 11px;
-  line-height: 1.8;
+  line-height: 1.9;
   color: #e0f0ff;
 }
 
-.vf-kw  { color: #c792ea; }
-.vf-str { color: #c3e88d; }
+.vf-kw    { color: #c792ea; }
+.vf-str   { color: #c3e88d; }
 .vf-plain { color: #e0f0ff; }
 
 .vf-output {
@@ -509,7 +563,7 @@
   }
 
   .proj-visual-wrap {
-    height: 200px;
+    height: 280px;
   }
 }
 
@@ -519,7 +573,7 @@
   }
 
   .proj-visual-wrap {
-    height: 180px;
+    height: 240px;
   }
 
   .proj-body {
