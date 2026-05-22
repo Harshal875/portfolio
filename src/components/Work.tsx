@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { FiGithub, FiArrowUpRight } from 'react-icons/fi'
 import { SiPypi } from 'react-icons/si'
 import './styles/Work.css'
@@ -113,23 +113,36 @@ const VisualMarket = () => (
   </div>
 )
 
-const VisualTrubeca = () => (
-  <div className="proj-visual v-trubeca">
-    <div className="vt-grid">
-      {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="vt-product-card">
-          <div className="vt-product-img" style={{ '--delay': `${i * 0.08}s` } as React.CSSProperties} />
-          <div className="vt-product-line" />
-          <div className="vt-product-line vt-short" />
-        </div>
-      ))}
+const VisualTrubeca = () => {
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const [scale, setScale] = useState(0.43)
+
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return
+    const observer = new ResizeObserver(([entry]) => {
+      setScale(entry.contentRect.width / 1440)
+    })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div className="proj-visual vt-iframe-wrap" ref={wrapRef}>
+      <iframe
+        src="https://trubeca.com"
+        title="Trubeca Lifesciences live preview"
+        loading="lazy"
+        className="vt-iframe"
+        style={{
+          transform: `scale(${scale})`,
+          height: `${220 / scale}px`,
+        }}
+      />
+      <div className="vt-iframe-fade" />
     </div>
-    <div className="vt-seo-bar">
-      <span className="vt-seo-dot" />
-      <span>100+ SEO-indexed pages live</span>
-    </div>
-  </div>
-)
+  )
+}
 
 const VisualFenestr = () => (
   <div className="proj-visual v-fenestr">
