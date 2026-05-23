@@ -60,53 +60,36 @@ const PROJECTS = [
 
 // ─── Per-project decorative visuals ──────────────────────────────────────────
 
-const LEAD_LINES = [
-  { city: 'Mumbai',    ms: '247', kw: 'pharma bulk'     },
-  { city: 'Delhi',     ms: '189', kw: 'api integration' },
-  { city: 'Pune',      ms: '312', kw: 'saas leads'      },
-  { city: 'Bangalore', ms: '203', kw: 'indiamart bot'   },
-  { city: 'Hyderabad', ms: '274', kw: 'lead capture'    },
-]
+const VisualKrayBot = () => {
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const [scale, setScale] = useState(0.43)
 
-const VisualKrayBot = () => (
-  <div className="proj-visual v-kraybot">
-    <div className="vk-term">
-      <div className="vk-term-bar">
-        <span className="vk-tb-dot" style={{ background: '#ff5f57' }} />
-        <span className="vk-tb-dot" style={{ background: '#febc2e' }} />
-        <span className="vk-tb-dot" style={{ background: '#28c840' }} />
-        <span className="vk-tb-title">kraybot · live feed</span>
-      </div>
-      <div className="vk-term-body">
-        <div className="vk-line vk-cmd" style={{ '--d': '0s' } as React.CSSProperties}>
-          <span className="vk-prompt">$</span> python kraybot.py --seller=demo
-        </div>
-        <div className="vk-line vk-info" style={{ '--d': '0.2s' } as React.CSSProperties}>
-          Connecting to IndiaMART feed...
-        </div>
-        <div className="vk-line vk-ok" style={{ '--d': '0.4s' } as React.CSSProperties}>
-          ● Feed live · polling every 3s
-        </div>
-        {LEAD_LINES.map((l, i) => (
-          <div
-            key={i}
-            className="vk-line vk-lead"
-            style={{ '--d': `${0.6 + i * 0.18}s` } as React.CSSProperties}
-          >
-            <span className="vk-ms">[{l.ms}ms]</span>
-            <span className="vk-lead-city">{l.city}</span>
-            <span className="vk-kw">&quot;{l.kw}&quot;</span>
-            <span className="vk-accept">✓ ACCEPTED</span>
-          </div>
-        ))}
-        <div className="vk-line vk-stat" style={{ '--d': '1.7s' } as React.CSSProperties}>
-          <span className="vk-stat-total">12,847</span> leads captured today
-          <span className="vk-cursor" />
-        </div>
-      </div>
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return
+    const observer = new ResizeObserver(([entry]) => {
+      setScale(entry.contentRect.width / 1440)
+    })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div className="proj-visual vk-iframe-wrap" ref={wrapRef}>
+      <iframe
+        src="https://kraybot.com"
+        title="KrayBot live preview"
+        loading="lazy"
+        className="vk-iframe"
+        style={{
+          transform: `scale(${scale})`,
+          height: `${400 / scale}px`,
+        }}
+      />
+      <div className="vk-iframe-fade" />
     </div>
-  </div>
-)
+  )
+}
 
 const BAR_HEIGHTS = [38, 62, 44, 78, 52, 88, 66, 74, 58, 92, 48, 70, 84, 55, 96]
 const BAR_COLORS = [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1] // 1=green 0=red
@@ -158,7 +141,7 @@ const VisualTrubeca = () => {
         className="vt-iframe"
         style={{
           transform: `scale(${scale})`,
-          height: `${320 / scale}px`,
+          height: `${400 / scale}px`,
         }}
       />
       <div className="vt-iframe-fade" />
