@@ -99,7 +99,7 @@ const Landing = () => {
             data-cursor="disable"
             aria-label="GitHub"
           >
-            <FiGithub />
+            <FiGithub /> GitHub
           </a>
           <a
             href="https://www.linkedin.com/in/harshal-bansal/"
@@ -109,7 +109,7 @@ const Landing = () => {
             data-cursor="disable"
             aria-label="LinkedIn"
           >
-            <FiLinkedin />
+            <FiLinkedin /> LinkedIn
           </a>
         </div>
       </div>
