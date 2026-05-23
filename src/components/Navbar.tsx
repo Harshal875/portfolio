@@ -1,7 +1,5 @@
 import { useEffect } from 'react'
-import { gsap } from 'gsap'
 import lenis from '../utils/lenis'
-import HoverLinks from './HoverLinks'
 import './styles/Navbar.css'
 
 const Navbar = () => {
@@ -26,31 +24,36 @@ const Navbar = () => {
           HB<span className="navbar-logo-dot">.</span>
         </a>
         <a
-          href="mailto:harshalbansal.bt23cseai@pec.edu.in"
+          href="mailto:hello@harshal.cc"
           className="navbar-email"
           data-cursor="disable"
         >
-          harshalbansal.bt23cseai@pec.edu.in
+          hello@harshal.cc
         </a>
         <ul>
           <li>
             <a className="nav-link" data-href="#about" href="#about" data-cursor="disable">
-              <HoverLinks text="ABOUT" />
+              ABOUT
             </a>
           </li>
           <li>
             <a className="nav-link" data-href="#career" href="#career" data-cursor="disable">
-              <HoverLinks text="EXPERIENCE" />
+              EXPERIENCE
             </a>
           </li>
           <li>
             <a className="nav-link" data-href="#work" href="#work" data-cursor="disable">
-              <HoverLinks text="WORK" />
+              WORK
+            </a>
+          </li>
+          <li>
+            <a className="nav-link" data-href="#achievements" href="#achievements" data-cursor="disable">
+              ACHIEVEMENTS
             </a>
           </li>
           <li>
             <a className="nav-link" data-href="#contact" href="#contact" data-cursor="disable">
-              <HoverLinks text="CONTACT" />
+              CONTACT
             </a>
           </li>
         </ul>
