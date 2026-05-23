@@ -3,6 +3,7 @@ import { initialFX, setAllTimeline } from '../utils/gsapAnimations'
 import setSplitText from '../utils/splitText'
 import '../utils/lenis'
 import About from './About'
+import Achievements from './Achievements'
 import Career from './Career'
 import Contact from './Contact'
 import Cursor from './Cursor'
@@ -44,6 +45,7 @@ const MainContainer = () => {
         <About />
         <Career />
         <Work />
+        <Achievements />
         <WhatIDo />
         {isDesktop && (
           <Suspense fallback={<div style={{ height: '100vh' }} />}>
