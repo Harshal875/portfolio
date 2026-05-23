@@ -134,6 +134,38 @@
   z-index: 3;
 }
 
+.avatar-socials {
+  position: absolute;
+  bottom: -48px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 4;
+}
+
+.avatar-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 16px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.avatar-social-btn:hover {
+  background: rgba(127, 64, 255, 0.2);
+  border-color: rgba(127, 64, 255, 0.5);
+  color: var(--accent2);
+  transform: translateY(-2px);
+}
+
 .avatar-img-wrap {
   position: absolute;
   inset: 20px;

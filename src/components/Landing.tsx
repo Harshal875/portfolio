@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react'
+import { FiGithub, FiLinkedin } from 'react-icons/fi'
 import lenis from '../utils/lenis'
 import './styles/Landing.css'
 
@@ -87,6 +88,30 @@ const Landing = () => {
         <div className="avatar-connector c1" />
         <div className="avatar-connector c2" />
         <div className="avatar-connector c3" />
+
+        {/* Social links below photo */}
+        <div className="avatar-socials">
+          <a
+            href="https://github.com/Harshal875"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="avatar-social-btn"
+            data-cursor="disable"
+            aria-label="GitHub"
+          >
+            <FiGithub />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/harshal-bansal/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="avatar-social-btn"
+            data-cursor="disable"
+            aria-label="LinkedIn"
+          >
+            <FiLinkedin />
+          </a>
+        </div>
       </div>
 
       {/* Ambient glow behind avatar */}

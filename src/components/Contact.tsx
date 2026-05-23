@@ -17,11 +17,11 @@ const Contact = () => {
           <div className="contact-block">
             <h4 className="contact-block-label">Reach Out</h4>
             <a
-              href="mailto:harshalbansal.bt23cseai@pec.edu.in"
+              href="mailto:hello@harshal.cc"
               className="contact-email"
               data-cursor="disable"
             >
-              harshalbansal.bt23cseai@pec.edu.in
+              hello@harshal.cc
               <FiArrowUpRight className="contact-arrow" />
             </a>
           </div>
