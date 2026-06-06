@@ -401,7 +401,22 @@
     height: 130px;
     order: -1;
     margin-left: 24px;
-    margin-bottom: 16px;
+    margin-bottom: 72px;
+  }
+
+  .avatar-socials {
+    bottom: -48px;
+    gap: 8px;
+  }
+
+  .avatar-social-btn {
+    font-size: 11px;
+    padding: 6px 12px;
+    gap: 5px;
+  }
+
+  .avatar-social-btn svg {
+    font-size: 13px;
   }
 
   .landing-glow {
