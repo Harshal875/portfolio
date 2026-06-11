@@ -4,7 +4,7 @@ const CAREER = [
   {
     role: 'Data Engineer Intern',
     company: 'CVENT',
-    period: 'Jan 2026 — Jun 2026',
+    period: 'Jan 2026 — Present',
     desc: 'Building and optimising data pipelines that power analytics for 300K+ events worldwide. Designing Snowflake transformations with dbt, orchestrating workflows with Informatica, and shipping clean datasets that directly feed product and business decisions.',
     current: true,
   },
