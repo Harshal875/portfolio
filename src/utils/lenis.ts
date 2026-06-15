@@ -19,3 +19,4 @@ gsap.ticker.add((time: number) => {
 gsap.ticker.lagSmoothing(0)
 
 export default lenis
+
