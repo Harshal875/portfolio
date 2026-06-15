@@ -9,3 +9,4 @@ import './utils/lenis'
 createRoot(document.getElementById('root')!).render(
   <App />
 )
+
