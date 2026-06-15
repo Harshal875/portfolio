@@ -26,3 +26,4 @@ export const LoadingProvider = ({ children }: { children: ReactNode }) => {
 }
 
 export const useLoading = () => useContext(LoadingContext)
+
